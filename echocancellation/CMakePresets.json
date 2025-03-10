@@ -1,0 +1,64 @@
+{
+    "version": 6,
+      "configurePresets": [
+        {
+            "name": "Base",
+            "hidden": true,
+            "generator": "Ninja",
+            "binaryDir": "build/${presetName}",
+            "architecture": {
+                "value": "unspecified",
+                "strategy": "external"
+            },
+            "vendor": {
+                "microsoft.com/VisualStudioSettings/CMake/1.0": {
+                    "intelliSenseMode": "linux-gcc-arm"
+                }
+            }
+        },
+        {
+            "name": "Debug",
+            "inherits": "Base",
+            "cacheVariables": {
+                "CMAKE_BUILD_TYPE": "Debug",
+                "config_compile_definitions": "DEBUG=1",
+                "config_compile_flags": "-O2"
+            }
+        },
+        {
+            "name": "DebugNoOpt",
+            "inherits": "Base",
+            "cacheVariables": {
+                "CMAKE_BUILD_TYPE": "Debug",
+                "config_compile_definitions": "DEBUG=1",
+                "config_compile_flags": "-O0"
+            }
+        },
+        {
+            "name": "Release",
+            "inherits": "Base",
+            "cacheVariables": {
+                "CMAKE_BUILD_TYPE": "Release",
+                "config_compile_definitions": "NDEBUG=1;RELEASE=1",
+                "config_compile_flags": "-O2"
+            }
+        }
+    ],
+    "buildPresets": [
+        {
+            "name": "Debug",
+            "configurePreset": "Debug",
+            "verbose": false
+        },
+        {
+            "name": "DebugNoOpt",
+            "configurePreset": "DebugNoOpt",
+            "verbose": false
+        },
+        {
+            "name": "Release",
+            "configurePreset": "Release",
+            "verbose": false
+        }
+    ]
+}
