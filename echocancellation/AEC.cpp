@@ -2,7 +2,8 @@
 #include "AEC.h"
 
 
-AEC* g_aec;
+//!!AEC* g_aec;
+AEC g_aec;
 
 
 AEC::AEC()
@@ -14,9 +15,11 @@ void AEC::init()
 {
     lms_.init();
 
-    g_codec->init();
+    //!!g_codec->init();
+    g_codec.init();
 
-    g_i2s_dstc->init();
+    //!!g_i2s_dstc->init();
+    g_i2s_dstc.init();
 
     for(uint32_t i = c_delay_blocks; i > 0; i--)
     {
@@ -34,7 +37,8 @@ AEC::run()
     constexpr uint32_t max_block_count = ((1000*c_sampling_freq_Hz)/1000)/c_block_size;
     
     // start I2S and DSTC
-    g_i2s_dstc->start();
+    //!!g_i2s_dstc->start();
+    g_i2s_dstc.start();
 
     // main loop
     while(true)
@@ -58,13 +62,14 @@ AEC::run()
     }
 }
 
-
+//!!
+/*
 void 
 AEC::create_instance()
 {
     static AEC aec_instance;
     g_aec = &aec_instance;
-}
+}*/
 
 
 void 
@@ -132,7 +137,8 @@ AEC::process_aec()
     ASSERT(r_ptr);
 
     // try to read input
-    bool succ = g_i2s_dstc->read_rx_block_float(left_input_block_, r_ptr);
+    //!!bool succ = g_i2s_dstc->read_rx_block_float(left_input_block_, r_ptr);
+    bool succ = g_i2s_dstc.read_rx_block_float(left_input_block_, r_ptr);
     if(!succ)
     {
         return;
@@ -159,7 +165,8 @@ AEC::process_aec()
     delay_buffer_.incr_read_block_ptr();
 
     // write output
-    g_i2s_dstc->write_tx_block_float(
+    //!!g_i2s_dstc->write_tx_block_float(
+    g_i2s_dstc.write_tx_block_float(
         left_output_block_
 #if LMS_FILTER_WITH_OUTPUT
         , right_output_block_
@@ -176,7 +183,8 @@ void
 AEC::passthrough()
 {
     // try to read input
-    bool succ = g_i2s_dstc->read_rx_block_float(left_input_block_, right_input_block_);
+    //!!bool succ = g_i2s_dstc->read_rx_block_float(left_input_block_, right_input_block_);
+    bool succ = g_i2s_dstc.read_rx_block_float(left_input_block_, right_input_block_);
     if(!succ)
     {
         return;
@@ -192,7 +200,8 @@ AEC::passthrough()
     }
 
     // write output
-    g_i2s_dstc->write_tx_block_float(left_output_block_, right_output_block_);
+    //!!g_i2s_dstc->write_tx_block_float(left_output_block_, right_output_block_);
+    g_i2s_dstc.write_tx_block_float(left_output_block_, right_output_block_);
 }
 
 
@@ -201,7 +210,8 @@ AEC::check_errors()
 {
     I2S_DSTC::Errors errors;
 
-    g_i2s_dstc->capture_errors(errors);
+    //!!g_i2s_dstc->capture_errors(errors);
+    g_i2s_dstc.capture_errors(errors);
 
     if(errors.tx_buffer_overrun > 0)
     {

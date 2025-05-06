@@ -5,13 +5,13 @@
 #include <stdio.h>
 #include <math.h>
 
-
 // PDL
-extern "C"
-{
-#include <platform.h>
-#include <utils.h>
-}
+#include "pdl_header.h"
+
+// utils
+#include "platform.h"
+#include "utils.h"
+
 
 
 // CMSIS-DSP

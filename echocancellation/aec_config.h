@@ -20,6 +20,11 @@ constexpr uint32_t c_block_size = 64;
 // current hardware setup requires a delay of about 93 ms
 constexpr uint32_t c_delay_blocks = ((93*c_sampling_freq_Hz)/1000)/c_block_size;
 
+// GPIO
+#define HIGH 1
+#define LOW 0
+#define ENABLE 1
+#define DISABLE 0
 
 
 //------------------------------

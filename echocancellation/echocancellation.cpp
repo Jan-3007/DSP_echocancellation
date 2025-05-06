@@ -7,15 +7,20 @@
 int main()
 {
     // workaround for the startup script not supporting C++
-    CodecWM8731::create_instance();
-    I2S_DSTC::create_instance();
-    AEC::create_instance();
+    //!!CodecWM8731::create_instance();
+    //!!I2S_DSTC::create_instance();
+    //!!AEC::create_instance();
+
+    // initialze whole platform, starts DMA, call as last init
+    //init_platform(115200, hz32000, line_in);
 
     // GPIO port configuration for 3 color LED, user button and test pin
-	GpioInit();
+	//!!GpioInit();
+    init_gpio();
     gpio_set(TEST_PIN, LOW);
 
-    IF_DEBUG(Uart0Init(115200));
+    //!!IF_DEBUG(Uart0Init(115200));
+    IF_DEBUG(init_uart0(115200));
     
     SystemCoreClockUpdate();
     IF_DEBUG(debug_printf("SystemCoreClock: %u Hz\n", SystemCoreClock));
@@ -33,8 +38,10 @@ int main()
     IF_DEBUG(debug_printf("  LMS mu: %.4f\n", c_mu));
 
 
-    g_aec->init();
-    g_aec->run();
+    //!!g_aec->init();
+    g_aec.init();
+    //!g_aec->run();
+    g_aec.run();
 
 
     

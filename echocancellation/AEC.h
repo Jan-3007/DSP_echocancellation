@@ -42,9 +42,10 @@ public:
     void
     run();
 
-    static
+    //!!
+    /*static
     void
-    create_instance();
+    create_instance();*/
 
 protected:
     void
@@ -64,5 +65,6 @@ protected:
 };
 
 
-extern AEC* g_aec;
+//!!extern AEC* g_aec;
+extern AEC g_aec;
 

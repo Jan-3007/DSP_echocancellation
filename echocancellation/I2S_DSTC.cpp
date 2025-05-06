@@ -3,26 +3,29 @@
 
 
 
-I2S_DSTC* g_i2s_dstc;
+//!!I2S_DSTC* g_i2s_dstc;
+I2S_DSTC g_i2s_dstc;
 
 // ctor
 I2S_DSTC::I2S_DSTC()
 {
 }
 
-
+//!!
+/*
 void 
 I2S_DSTC::create_instance()
 {
     static I2S_DSTC i2s_dstc_instance;  
     g_i2s_dstc = &i2s_dstc_instance;
-}
+}*/
 
 
 void 
 I2S_DSTC::init()
 {
-    I2S0Init(c_samp_freq, dma, nullptr);
+    //!!I2S0Init(c_samp_freq, dma, nullptr);
+    init_I2S0(c_samp_freq);
 
     // initial condition for tx buffer
     for(uint32_t i = c_fifo_size_blocks; i > 0; i--)
@@ -234,14 +237,16 @@ I2S_DSTC::isr_rx()
 void 
 I2S_DSTC::isr_tx_static()
 {
-    g_i2s_dstc->isr_tx();
+    //!!g_i2s_dstc->isr_tx();
+    g_i2s_dstc.isr_tx();
 }
 
 
 void 
 I2S_DSTC::isr_rx_static()
 {
-    g_i2s_dstc->isr_rx();
+    //!!g_i2s_dstc->isr_rx();
+    g_i2s_dstc.isr_rx();
 }
 
 

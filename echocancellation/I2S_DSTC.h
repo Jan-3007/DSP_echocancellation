@@ -23,9 +23,10 @@ public:
     // ctor
     I2S_DSTC();
 
-    static
+    //!!
+    /*static
     void
-    create_instance();
+    create_instance();*/
 
     void
     init();
@@ -95,6 +96,7 @@ protected:
 
 
 
-extern I2S_DSTC* g_i2s_dstc;
+//!!extern I2S_DSTC* g_i2s_dstc;
+extern I2S_DSTC g_i2s_dstc;
 
 

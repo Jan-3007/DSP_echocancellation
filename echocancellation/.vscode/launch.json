@@ -42,7 +42,7 @@
             "showDevDebugOutput": "raw",  // one of: "raw", "parsed", "both", "vscode"
             //"showDevDebugTimestamps": true,
 
-//            "runToEntryPoint": "main",
+            "runToEntryPoint": "main",
         },
 
         {

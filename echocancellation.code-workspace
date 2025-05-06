@@ -4,13 +4,32 @@
 			"path": "echocancellation"
 		}
     ],
-    "settings": {},
+    "settings": {
+        "cmake.options.advanced": {
+            "cpack": {
+                "statusBarVisibility": "hidden",
+				"projectStatusVisibility": "hidden"
+            },
+            "ctest": {
+                "statusBarVisibility": "hidden",
+				"projectStatusVisibility": "hidden"
+            },
+            "debug": {
+                "statusBarVisibility": "hidden",
+				"projectStatusVisibility": "hidden"
+            },
+            "launch": {
+                "statusBarVisibility": "hidden",
+				"projectStatusVisibility": "hidden"
+            }
+        }
+    },
 	"extensions": {
 		"recommendations": [
 			"ms-vscode.cpptools-extension-pack",
-			"marus25.cortex-debug"
+			"marus25.cortex-debug",
             "ms-vscode.vscode-serial-monitor"
 		]
-	},
+	}
 }
 
