@@ -25,7 +25,7 @@ int main()
     SystemCoreClockUpdate();
     IF_DEBUG(debug_printf("SystemCoreClock: %u Hz\n", SystemCoreClock));
     
-    uint32_t msp = __get_MSP();
+    IF_DEBUG(uint32_t msp = __get_MSP());
     IF_DEBUG(debug_printf("MSP: 0x%08x\n", msp));
 
 
